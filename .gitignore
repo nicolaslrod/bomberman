@@ -1,8 +1,6 @@
 build/
 out/
-.gradle/
 .idea/
 *.iml
 target/
-build/
 *.sw?
