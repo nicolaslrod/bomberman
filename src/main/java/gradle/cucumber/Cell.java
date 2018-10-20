@@ -17,10 +17,14 @@ public class Cell {
 
 
     public Integer getX() {
-        return this.axisX;
+        return axisX;
     }
 
     public Integer getY() {
-        return this.axisY;
+        return axisY;
+    }
+
+    public boolean getWall(){
+        return wall;
     }
 }

@@ -1,7 +1,5 @@
 package gradle.cucumber;
 
-import java.awt.event.MouseEvent;
-
 public class Bomberman {
 
     private Cell cell;
@@ -13,7 +11,9 @@ public class Bomberman {
     }
 
     public void moverHacia(Cell cell) {
-        this.cell = cell;
+        if(!cell.getWall()){
+            this.cell = cell;
+        }
     }
 
     public Cell getPosition() {

@@ -25,10 +25,23 @@ public class BombermanMoveStepdefs {
         bomberman.moverHacia(cell);
     }
 
-    @Then("^Bomber man it´s alive and his position is \"([^\"]*)\" \"([^\"]*)\"")
+    @When("^Bomberman moves to a wall \"([^\"]*)\" \"([^\"]*)\"")
+    public void bomberman_moves_to_wall(String anAxisX,  String anAxisY) throws Throwable {
+        Cell cell = new Cell(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), true, false);
+        bomberman.moverHacia(cell);
+    }
+
+    @Then("^Bomberman is alive and his position is \"([^\"]*)\" \"([^\"]*)\"")
     public void bomber_man_it_s_alive_and_his_position_is(String anAxisX, String anAxisY) throws Throwable {
         assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
         assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
         assertFalse(bomberman.isDead());
     }
+
+    @Then("^Bomberman´s position is \"([^\"]*)\" \"([^\"]*)\"")
+    public void bomber_man_position_is(String anAxisX, String anAxisY) throws Throwable {
+        assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
+        assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
+    }
+
 }
