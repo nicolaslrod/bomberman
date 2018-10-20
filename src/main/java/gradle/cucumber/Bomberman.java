@@ -10,9 +10,12 @@ public class Bomberman {
         this.alive = true;
     }
 
-    public void moverHacia(Cell cell) {
+    public void moveTo(Cell cell) {
         if(!cell.getWall()){
             this.cell = cell;
+        }
+        if(cell.hasAnEnemy()){
+            this.alive = false;
         }
     }
 

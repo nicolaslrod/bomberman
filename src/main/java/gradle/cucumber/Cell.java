@@ -27,4 +27,8 @@ public class Cell {
     public boolean getWall(){
         return wall;
     }
+
+    public boolean hasAnEnemy() {
+        return enemy;
+    }
 }
