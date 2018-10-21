@@ -1,4 +1,6 @@
-package gradle.cucumber;
+package gradle.cucumber.bomb;
+
+import gradle.cucumber.cell.Cell;
 
 public class Bomb {
     private Integer ticks;

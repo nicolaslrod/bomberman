@@ -3,6 +3,10 @@ package gradle.cucumber;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import gradle.cucumber.cell.Cell;
+import gradle.cucumber.cell.CellAddress;
+import gradle.cucumber.wall.NoWall;
+import gradle.cucumber.wall.SimpleWall;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -14,25 +18,25 @@ public class BombermanMoveStepdefs {
 
     @Given("^A empty cell \"([^\"]*)\" \"([^\"]*)\"")
     public void a_empty_cell(String anAxisX, String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, false,null,null,null,null);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,null,null,null,null);
         bomberman = new Bomberman(cell);
     }
 
     @When("^Bomberman moves to an empty cell \"([^\"]*)\" \"([^\"]*)\"")
     public void bomberman_moves_to_an_empty_cell(String anAxisX,  String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, false,null,null,null,null);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,null,null,null,null);
         bomberman.moveTo(cell);
     }
 
     @When("^Bomberman moves to a wall \"([^\"]*)\" \"([^\"]*)\"")
     public void bomberman_moves_to_wall(String anAxisX,  String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), true, false,null,null,null,null);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new SimpleWall(), false,null,null,null,null);
         bomberman.moveTo(cell);
     }
 
     @When("^Bomberman moves to a cell with an enemy \"([^\"]*)\" \"([^\"]*)\"")
     public void bomberman_moves_to_cell_with_an_enemy(String anAxisX,  String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, true,null,null,null,null);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), true,null,null,null,null);
         bomberman.moveTo(cell);
     }
 

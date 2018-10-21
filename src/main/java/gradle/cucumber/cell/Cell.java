@@ -1,4 +1,8 @@
-package gradle.cucumber;
+package gradle.cucumber.cell;
+
+import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.wall.SteelWall;
+import gradle.cucumber.wall.Wall;
 
 public interface Cell {
 
@@ -6,7 +10,7 @@ public interface Cell {
 
     Integer getY();
 
-    boolean getWall();
+    Wall getWall();
 
     boolean hasAnEnemy();
 
@@ -17,4 +21,6 @@ public interface Cell {
     void addEnemy();
 
     void killEnemy(int i);
+
+    void addWall(Wall wall);
 }

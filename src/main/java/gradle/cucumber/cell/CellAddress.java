@@ -1,11 +1,15 @@
-package gradle.cucumber;
+package gradle.cucumber.cell;
+
+import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.wall.SteelWall;
+import gradle.cucumber.wall.Wall;
 
 public class CellAddress implements Cell {
 
 
     private Integer axisX;
     private Integer axisY;
-    private boolean wall;
+    private Wall wall;
     private boolean enemy;
     private boolean bomb;
     private Cell northCell;
@@ -14,7 +18,7 @@ public class CellAddress implements Cell {
     private Cell westCell;
 
 
-    public CellAddress(Integer anAxisX, Integer anAxisY, boolean wall, boolean enemy, Cell nc, Cell sc, Cell wc, Cell ec) {
+    public CellAddress(Integer anAxisX, Integer anAxisY, Wall wall, boolean enemy, Cell nc, Cell sc, Cell wc, Cell ec) {
         this.axisX = anAxisX;
         this.axisY = anAxisY;
         this.wall = wall;
@@ -28,7 +32,7 @@ public class CellAddress implements Cell {
 
 
     @Override
-    public boolean getWall(){
+    public Wall getWall(){
         return wall;
     }
     @Override
@@ -43,7 +47,7 @@ public class CellAddress implements Cell {
 
     @Override
     public void breakWall(int ratio) {
-        wall = false;
+        wall.breakWall();
         if(ratio > 0){
             int newRatio = ratio - 1;
             northCell.breakWall(newRatio);
@@ -69,6 +73,11 @@ public class CellAddress implements Cell {
             eastCell.killEnemy(newRatio);
             southCell.killEnemy(newRatio);
         }
+    }
+
+    @Override
+    public void addWall(Wall wall1) {
+        wall = wall1;
     }
 
     @Override

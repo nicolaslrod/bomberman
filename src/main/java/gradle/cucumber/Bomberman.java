@@ -1,5 +1,8 @@
 package gradle.cucumber;
 
+import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.cell.Cell;
+
 public class Bomberman {
 
     private Cell cell;
@@ -13,7 +16,7 @@ public class Bomberman {
     }
 
     public void moveTo(Cell cell) {
-        if(!cell.getWall()){
+        if(cell.getWall().isNoWall()){
             this.cell = cell;
         }
         if(cell.hasAnEnemy()){
