@@ -29,7 +29,7 @@ public class Bomberman {
         return !alive;
     }
 
-    public void dropBomb() {
-        this.cell.setBomb();
+    public void dropBomb() throws InterruptedException {
+        this.cell.setBomb(new Bomb());
     }
 }

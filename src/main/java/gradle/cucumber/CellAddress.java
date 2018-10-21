@@ -27,7 +27,6 @@ public class CellAddress implements Cell {
     }
 
 
-
     @Override
     public boolean getWall(){
         return wall;
@@ -37,8 +36,22 @@ public class CellAddress implements Cell {
         return enemy;
     }
     @Override
-    public void setBomb() {
-        this.bomb=true;
+    public void setBomb(Bomb bomb) throws InterruptedException {
+        Thread.sleep(bomb.getTicks()*1000);
+        bomb.exploit(this);
+    }
+
+    @Override
+    public void breakWall(int ratio) {
+        wall = false;
+        if(ratio > 0){
+            int newRatio = ratio - 1;
+            northCell.breakWall(newRatio);
+            westCell.breakWall(newRatio);
+            eastCell.breakWall(newRatio);
+            southCell.breakWall(newRatio);
+        }
+
     }
 
     @Override
