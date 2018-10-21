@@ -13,6 +13,7 @@ public interface Cell {
     Wall getWall();
 
     boolean hasAnEnemy();
+    boolean hasABoss();
 
     void setBomb(Bomb bomb) throws InterruptedException;
 
@@ -20,7 +21,12 @@ public interface Cell {
 
     void addEnemy();
 
+    void addBoss();
+
     void killEnemy(int i);
+
+    void killBoss(int i);
+
 
     void addWall(Wall wall);
 }

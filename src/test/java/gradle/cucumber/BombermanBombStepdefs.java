@@ -25,6 +25,7 @@ public class BombermanBombStepdefs {
     private Cell eastCell= new CellAddress(1,2,new SimpleWall(),false,new NoCell(),
             new NoCell(),new NoCell(),new NoCell());
 
+    // First ATDD: destroying normal walls
 
     @Given("^A empty cellAddress \"([^\"]*)\" \"([^\"]*)\"")
     public void a_empty_cell(String anAxisX, String anAxisY) throws Throwable {
@@ -46,6 +47,8 @@ public class BombermanBombStepdefs {
         assertTrue(eastCell.getWall().isBroken());
     }
 
+    // Second ATDD : killing our first enemies
+
     @Given("^Other empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with a enemy in the next cell$")
     public void aEmptyCellAddressWithAEnemyInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
         northCell.addEnemy();
@@ -63,7 +66,7 @@ public class BombermanBombStepdefs {
     public void theBombAfterNTicksKillsAllTheEnemiesThatAreInContactWithTheExpansiveWave() throws Throwable {
         assertFalse(northCell.hasAnEnemy());
     }
-
+    // Third ATDD : Exploding bombs around steel walls
 
     @Given("^cellAddress \"([^\"]*)\" \"([^\"]*)\" with a steel wall in the next cell$")
     public void celladdressWithASteelWallInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
@@ -85,4 +88,28 @@ public class BombermanBombStepdefs {
         assertTrue(northCell.getWall().isBroken());
         assertFalse(eastCell.getWall().isBroken());
     }
+
+
+    // Last ATDD : Killing the BOSS
+
+
+
+    @Given("^Other empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with ProtoMaxUnit in the next cell$")
+    public void aEmptyCellAddressWithProtoMaxUnitsInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
+        northCell.addBoss();
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
+        bomberman = new Bomberman(cell);
+    }
+
+    @When("^Bomberman drops a bomb ProtoMaxUnit is next to the bomberman´s position$")
+    public void bombermanDropsABombAndOneBossISNextToTheBombermanSPosition() throws Throwable {
+        assertTrue(northCell.hasABoss());
+        bomberman.dropBomb();
+    }
+
+    @Then("^the bomb after 'n' ticks kills the enemy and it drops a new super power$")
+    public void theBombAfterNTicksKillsProtoMaxUnits() throws Throwable {
+        assertFalse(northCell.hasABoss());
+    }
+
 }

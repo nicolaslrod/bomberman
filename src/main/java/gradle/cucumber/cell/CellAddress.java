@@ -1,7 +1,6 @@
 package gradle.cucumber.cell;
 
 import gradle.cucumber.bomb.Bomb;
-import gradle.cucumber.wall.SteelWall;
 import gradle.cucumber.wall.Wall;
 
 public class CellAddress implements Cell {
@@ -12,6 +11,7 @@ public class CellAddress implements Cell {
     private Wall wall;
     private boolean enemy;
     private boolean bomb;
+    private boolean protoMaxUnits;
     private Cell northCell;
     private Cell southCell;
     private Cell eastCell;
@@ -23,6 +23,7 @@ public class CellAddress implements Cell {
         this.axisY = anAxisY;
         this.wall = wall;
         this.enemy = enemy;
+        this.protoMaxUnits = false;
         this.bomb= false;
         this.northCell=nc;
         this.southCell=sc;
@@ -39,6 +40,11 @@ public class CellAddress implements Cell {
     public boolean hasAnEnemy() {
         return enemy;
     }
+    @Override
+    public boolean hasABoss() {
+        return protoMaxUnits;
+    }
+
     @Override
     public void setBomb(Bomb bomb) throws InterruptedException {
         Thread.sleep(bomb.getTicks()*1000);
@@ -64,6 +70,12 @@ public class CellAddress implements Cell {
     }
 
     @Override
+    public void addBoss() {
+        protoMaxUnits = true;
+    }
+
+
+    @Override
     public void killEnemy(int ratio) {
         enemy = false;
         if(ratio > 0){
@@ -72,6 +84,18 @@ public class CellAddress implements Cell {
             westCell.killEnemy(newRatio);
             eastCell.killEnemy(newRatio);
             southCell.killEnemy(newRatio);
+        }
+    }
+
+    @Override
+    public void killBoss(int ratio) {
+        protoMaxUnits = false;
+        if(ratio > 0){
+            int newRatio = ratio - 1;
+            northCell.killBoss(newRatio);
+            westCell.killBoss(newRatio);
+            eastCell.killBoss(newRatio);
+            southCell.killBoss(newRatio);
         }
     }
 

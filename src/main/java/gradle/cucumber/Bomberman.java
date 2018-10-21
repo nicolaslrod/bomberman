@@ -34,5 +34,14 @@ public class Bomberman {
 
     public void dropBomb() throws InterruptedException {
         this.cell.setBomb(new Bomb());
+     //   this.claimNewSuperPowers("ProtoMaxUnits");
     }
+    /*public void claimNewSuperPowers(bossName){
+        switch (bossName){
+
+            case ("ProtoMaxUnits"){
+
+            }
+        }*/
+
 }

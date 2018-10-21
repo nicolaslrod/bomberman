@@ -28,6 +28,11 @@ public class NoCell implements Cell {
     }
 
     @Override
+    public boolean hasABoss() {
+        return false;
+    }
+
+    @Override
     public void setBomb(Bomb bomb) {
 
     }
@@ -43,7 +48,16 @@ public class NoCell implements Cell {
     }
 
     @Override
+    public void addBoss() {
+
+    }
+
+    @Override
     public void killEnemy(int i) {
+
+    }
+    @Override
+    public void killBoss(int i) {
 
     }
 
