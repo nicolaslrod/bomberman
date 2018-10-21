@@ -24,7 +24,12 @@ public class NoCell implements Cell {
     }
 
     @Override
-    public void setBomb() {
+    public void setBomb(Bomb bomb) {
+
+    }
+
+    @Override
+    public void breakWall(int ratio) {
 
     }
 }
