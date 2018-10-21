@@ -1,34 +1,18 @@
 package gradle.cucumber;
 
-public class Cell {
+public interface Cell {
 
 
-    private Integer axisX;
-    private Integer axisY;
-    private boolean wall;
-    private boolean enemy;
 
-    public Cell(Integer anAxisX, Integer anAxisY, boolean wall, boolean enemy) {
-        this.axisX = anAxisX;
-        this.axisY = anAxisY;
-        this.wall = wall;
-        this.enemy = enemy;
-    }
+    public Integer getX();
 
 
-    public Integer getX() {
-        return axisX;
-    }
+    public Integer getY();
 
-    public Integer getY() {
-        return axisY;
-    }
 
-    public boolean getWall(){
-        return wall;
-    }
+    boolean getWall();
 
-    public boolean hasAnEnemy() {
-        return enemy;
-    }
+    boolean hasAnEnemy();
+
+    void setBomb();
 }

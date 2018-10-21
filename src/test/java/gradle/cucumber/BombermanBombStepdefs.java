@@ -1,5 +1,6 @@
 package gradle.cucumber;
 
+/*import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -8,31 +9,57 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class BombermanMoveStepdefs {
+public class BombermanBombStepdefs {
 
     private Bomberman bomberman;
+    private Cell northCell = new CellAddress(2,1,true,false,null,null,null,null);
+    private Cell southCell=new NoCell();
+    private Cell westCell= new NoCell();
+    private Cell eastCell= new CellAddress(1,2,true,false,null,null,null,null);
 
-    @Given("^A empty cell \"([^\"]*)\" \"([^\"]*)\"")
+
+    @Given("^A empty cellAddress \"([^\"]*)\" \"([^\"]*)\"")
     public void a_empty_cell(String anAxisX, String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, false,null,null,null,null);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, false,northCell,southCell,eastCell,westCell);
         bomberman = new Bomberman(cell);
+
     }
 
-    @When("^Bomberman moves to an empty cell \"([^\"]*)\" \"([^\"]*)\"")
-    public void bomberman_moves_to_an_empty_cell(String anAxisX,  String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, false,null,null,null,null);
-        bomberman.moveTo(cell);
+    @When("^Bomberman drops a bomb \"([^\"]*)\" \"([^\"]*)\"")
+    public void bomberman_drops_a_bomb() throws Throwable {
+
+        bomberman.dropBomb();
     }
+    @Then("^the bomb after 'n' ticks destroys all the walls in a '3' cell radio \"([^\"]*)\" \"([^\"]*)\"")
+    public void the_bomb_explodes_after_n_ticks_and_destroys_walls_in_a_3_radio_cell() throws Throwable {
+
+        assertFalse(northCell.getWall() );
+        assertFalse(eastCell.getWall() );
+
+    }
+
+    @When("^Bomberman drops a bomb$")
+    public void bombermanDropsABomb() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+
+    @Then("^the bomb after 'n' ticks destroys all the walls in a '(\\d+)' cell radio$")
+    public void theBombAfterNTicksDestroysAllTheWallsInACellRadio(int arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+    /*
 
     @When("^Bomberman moves to a wall \"([^\"]*)\" \"([^\"]*)\"")
     public void bomberman_moves_to_wall(String anAxisX,  String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), true, false,null,null,null,null);
+        CellAddress cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), true, false);
         bomberman.moveTo(cell);
     }
 
     @When("^Bomberman moves to a cell with an enemy \"([^\"]*)\" \"([^\"]*)\"")
     public void bomberman_moves_to_cell_with_an_enemy(String anAxisX,  String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, true,null,null,null,null);
+        CellAddress cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, true);
         bomberman.moveTo(cell);
     }
 
@@ -55,3 +82,4 @@ public class BombermanMoveStepdefs {
     }
 
 }
+*/

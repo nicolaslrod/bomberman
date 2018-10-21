@@ -5,6 +5,8 @@ public class Bomberman {
     private Cell cell;
     private boolean alive;
 
+
+
     public Bomberman(Cell cell) {
         this.cell = cell;
         this.alive = true;
@@ -25,5 +27,9 @@ public class Bomberman {
 
     public boolean isDead() {
         return !alive;
+    }
+
+    public void dropBomb() {
+        this.cell.setBomb();
     }
 }
