@@ -9,6 +9,7 @@ public class Bomb {
 
     public void exploit(Cell cell) {
         cell.breakWall(3);
+        cell.killEnemy(3);
     }
 
     public Integer getTicks(){
