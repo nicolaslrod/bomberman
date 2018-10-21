@@ -55,6 +55,23 @@ public class CellAddress implements Cell {
     }
 
     @Override
+    public void addEnemy() {
+        enemy = true;
+    }
+
+    @Override
+    public void killEnemy(int ratio) {
+        enemy = false;
+        if(ratio > 0){
+            int newRatio = ratio - 1;
+            northCell.killEnemy(newRatio);
+            westCell.killEnemy(newRatio);
+            eastCell.killEnemy(newRatio);
+            southCell.killEnemy(newRatio);
+        }
+    }
+
+    @Override
     public Integer getX() {
         return axisX;
     }

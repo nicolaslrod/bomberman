@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BombermanBombStepdefs {
 
@@ -28,6 +29,8 @@ public class BombermanBombStepdefs {
 
     @When("^Bomberman drops a bomb$")
     public void bombermanDropsABomb() throws Throwable {
+        assertTrue(northCell.getWall());
+        assertTrue(eastCell.getWall());
         bomberman.dropBomb();
     }
 
@@ -36,36 +39,22 @@ public class BombermanBombStepdefs {
         assertFalse(northCell.getWall());
         assertFalse(eastCell.getWall());
     }
-    /*
 
-    @When("^Bomberman moves to a wall \"([^\"]*)\" \"([^\"]*)\"")
-    public void bomberman_moves_to_wall(String anAxisX,  String anAxisY) throws Throwable {
-        CellAddress cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), true, false);
-        bomberman.moveTo(cell);
+    @Given("^Other empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with a enemy in the next cell$")
+    public void aEmptyCellAddressWithAEnemyInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
+        northCell.addEnemy();
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, false,northCell,southCell,eastCell,westCell);
+        bomberman = new Bomberman(cell);
     }
 
-    @When("^Bomberman moves to a cell with an enemy \"([^\"]*)\" \"([^\"]*)\"")
-    public void bomberman_moves_to_cell_with_an_enemy(String anAxisX,  String anAxisY) throws Throwable {
-        CellAddress cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), false, true);
-        bomberman.moveTo(cell);
+    @When("^Bomberman drops a bomb and one enemy it´s next to the bomberman´s position$")
+    public void bombermanDropsABombAndOneEnemyItSNextToTheBombermanSPosition() throws Throwable {
+        assertTrue(northCell.hasAnEnemy());
+        bomberman.dropBomb();
     }
 
-    @Then("^Bomberman is alive and his position is \"([^\"]*)\" \"([^\"]*)\"")
-    public void bomber_man_it_s_alive_and_his_position_is(String anAxisX, String anAxisY) throws Throwable {
-        assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
-        assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
-        assertFalse(bomberman.isDead());
+    @Then("^the bomb after 'n' ticks kills all the enemies that are in contact with the expansive wave$")
+    public void theBombAfterNTicksKillsAllTheEnemiesThatAreInContactWithTheExpansiveWave() throws Throwable {
+        assertFalse(northCell.hasAnEnemy());
     }
-
-    @Then("^Bomberman´s position is \"([^\"]*)\" \"([^\"]*)\"")
-    public void bomber_man_position_is(String anAxisX, String anAxisY) throws Throwable {
-        assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
-        assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
-    }
-
-    @Then("^Bomberman dies")
-    public void bomberman_dies() throws Throwable {
-        assertTrue(bomberman.isDead());
-    }
-*/
 }

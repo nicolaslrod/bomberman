@@ -32,4 +32,14 @@ public class NoCell implements Cell {
     public void breakWall(int ratio) {
 
     }
+
+    @Override
+    public void addEnemy() {
+
+    }
+
+    @Override
+    public void killEnemy(int i) {
+
+    }
 }

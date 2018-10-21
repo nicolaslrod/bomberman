@@ -13,4 +13,8 @@ public interface Cell {
     void setBomb(Bomb bomb) throws InterruptedException;
 
     void breakWall(int ratio);
+
+    void addEnemy();
+
+    void killEnemy(int i);
 }
