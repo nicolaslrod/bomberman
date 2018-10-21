@@ -1,4 +1,8 @@
-package gradle.cucumber;
+package gradle.cucumber.cell;
+
+import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.wall.NoWall;
+import gradle.cucumber.wall.Wall;
 
 public class NoCell implements Cell {
 
@@ -14,8 +18,8 @@ public class NoCell implements Cell {
     }
 
     @Override
-    public boolean getWall() {
-        return false;
+    public Wall getWall() {
+        return new NoWall();
     }
 
     @Override
@@ -40,6 +44,11 @@ public class NoCell implements Cell {
 
     @Override
     public void killEnemy(int i) {
+
+    }
+
+    @Override
+    public void addWall(Wall wall) {
 
     }
 }
