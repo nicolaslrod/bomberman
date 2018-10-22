@@ -65,4 +65,9 @@ public class NoCell implements Cell {
     public void addWall(Wall wall) {
 
     }
+
+    @Override
+    public boolean hasASuperPower() {
+        return false;
+    }
 }

@@ -11,7 +11,8 @@ public class CellAddress implements Cell {
     private Wall wall;
     private boolean enemy;
     private boolean bomb;
-    private boolean protoMaxUnits;
+    private boolean bagula;
+    private boolean superPower;
     private Cell northCell;
     private Cell southCell;
     private Cell eastCell;
@@ -23,12 +24,13 @@ public class CellAddress implements Cell {
         this.axisY = anAxisY;
         this.wall = wall;
         this.enemy = enemy;
-        this.protoMaxUnits = false;
+        this.bagula = false;
         this.bomb= false;
         this.northCell=nc;
         this.southCell=sc;
         this.eastCell=ec;
         this.westCell=wc;
+        this.superPower = false;
     }
 
 
@@ -42,7 +44,7 @@ public class CellAddress implements Cell {
     }
     @Override
     public boolean hasABoss() {
-        return protoMaxUnits;
+        return bagula;
     }
 
     @Override
@@ -71,7 +73,7 @@ public class CellAddress implements Cell {
 
     @Override
     public void addBoss() {
-        protoMaxUnits = true;
+        bagula = true;
     }
 
 
@@ -89,7 +91,8 @@ public class CellAddress implements Cell {
 
     @Override
     public void killBoss(int ratio) {
-        protoMaxUnits = false;
+        bagula = false;
+        superPower = true;
         if(ratio > 0){
             int newRatio = ratio - 1;
             northCell.killBoss(newRatio);
@@ -102,6 +105,11 @@ public class CellAddress implements Cell {
     @Override
     public void addWall(Wall wall1) {
         wall = wall1;
+    }
+
+    @Override
+    public boolean hasASuperPower() {
+        return this.superPower;
     }
 
     @Override

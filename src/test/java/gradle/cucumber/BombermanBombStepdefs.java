@@ -89,27 +89,4 @@ public class BombermanBombStepdefs {
         assertFalse(eastCell.getWall().isBroken());
     }
 
-
-    // Last ATDD : Killing the BOSS
-
-
-
-    @Given("^Other empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with ProtoMaxUnit in the next cell$")
-    public void aEmptyCellAddressWithProtoMaxUnitsInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
-        northCell.addBoss();
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
-        bomberman = new Bomberman(cell);
-    }
-
-    @When("^Bomberman drops a bomb ProtoMaxUnit is next to the bomberman´s position$")
-    public void bombermanDropsABombAndOneBossISNextToTheBombermanSPosition() throws Throwable {
-        assertTrue(northCell.hasABoss());
-        bomberman.dropBomb();
-    }
-
-    @Then("^the bomb after 'n' ticks kills the enemy and it drops a new super power$")
-    public void theBombAfterNTicksKillsProtoMaxUnits() throws Throwable {
-        assertFalse(northCell.hasABoss());
-    }
-
 }
