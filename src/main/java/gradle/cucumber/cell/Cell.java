@@ -29,4 +29,6 @@ public interface Cell {
 
 
     void addWall(Wall wall);
+
+    boolean hasASuperPower();
 }
