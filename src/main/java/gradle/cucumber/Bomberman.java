@@ -47,4 +47,9 @@ public class Bomberman {
     public Superpower getSuperPower() {
         return this.mySuperPower;
     }
+
+    public void throwBomb(Cell cellToExplode) throws InterruptedException  {
+
+        cellToExplode.setBomb(new Bomb());
+    }
 }

@@ -13,6 +13,7 @@ import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.NoWall;
 import gradle.cucumber.wall.SimpleWall;
 import gradle.cucumber.wall.SteelWall;
+import gradle.cucumber.wall.Wall;
 
 import static org.junit.Assert.*;
 
@@ -25,6 +26,7 @@ public class BombermanBossStepdefs {
     private Cell westCell= new NoCell();
     private Cell eastCell= new CellAddress(1,2,new SimpleWall(),false,new NoCell(),
             new NoCell(),new NoCell(),new NoCell());
+    private Cell cell;
 
 
     @Given("^An empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with Bagula in the east cell$")
@@ -35,8 +37,8 @@ public class BombermanBossStepdefs {
         assertTrue(eastCell.hasABoss());
     }
 
-    @When("^Bomberman drops a bomb next to Bagula$")
-    public void bombermanDropsABomb() throws Throwable {
+    @When("^fiestaFiesta")
+    public void fiestaFiesta() throws Throwable {
         bomberman.dropBomb();
     }
 
@@ -87,7 +89,29 @@ public class BombermanBossStepdefs {
        assertNotNull(bomberman.getSuperPower());
 
     }
+// ATDD Using the new superPower THROW BOMB
 
+    @Given("^BombaMan with a superPower in cellAdress \"([^\"]*)\" \"([^\"]*)\"$")
+    public void bombaManWithASuperPowerInCellAdress(String anAxisX, String anAxisY) throws Throwable {
 
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
 
+        bomberman = new Bomberman(cell);
+        Superpower sp = new Superpower();
+
+        cell.addSuperPower(sp);
+        bomberman.pickUpSuperPower();
+
+    }
+
+    @When("^BombaMan throws a bomb to cellAdress \"([^\"]*)\" \"([^\"]*)\"$")
+    public void bombaManThrowABombToCellAdress(String anAxisX, String anAxisY) throws Throwable {
+        cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new SimpleWall(), false,new NoCell(),new NoCell(),new NoCell(),new NoCell());
+        bomberman.throwBomb(cell);
+    }
+
+    @Then("^the bomb after 'n' ticks explodes$")
+    public void bombaManTheBombAfterNTicksExplodes() throws Throwable {
+       assertTrue(cell.getWall().isBroken());
+    }
 }
