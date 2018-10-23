@@ -13,7 +13,6 @@ public class CellAddress implements Cell {
     private boolean enemy;
     private boolean bomb;
     private boolean bagula;
-    private boolean superPower;
     private Cell northCell;
     private Cell southCell;
     private Cell eastCell;
@@ -21,7 +20,7 @@ public class CellAddress implements Cell {
     private Superpower superP;
 
 
-    public CellAddress(Integer anAxisX, Integer anAxisY, Wall wall, boolean enemy, Cell nc, Cell sc, Cell wc, Cell ec) {
+    public CellAddress(Integer anAxisX, Integer anAxisY, Wall wall, boolean enemy, Cell nc, Cell sc, Cell ec, Cell wc) {
         this.axisX = anAxisX;
         this.axisY = anAxisY;
         this.wall = wall;
@@ -32,7 +31,8 @@ public class CellAddress implements Cell {
         this.southCell=sc;
         this.eastCell=ec;
         this.westCell=wc;
-        this.superPower = false;
+
+
     }
 
 
@@ -94,7 +94,7 @@ public class CellAddress implements Cell {
     @Override
     public void killBoss(int ratio) {
         bagula = false;
-        superPower = true;
+        superP = new Superpower();
         if(ratio > 0){
             int newRatio = ratio - 1;
             northCell.killBoss(newRatio);
@@ -111,12 +111,37 @@ public class CellAddress implements Cell {
 
     @Override
     public boolean hasASuperPower() {
-        return this.superPower;
+        return this.superP != null;
     }
 
     @Override
     public void addSuperPower(Superpower sp) {
         this.superP = sp;
+    }
+
+    @Override
+    public Cell getEast() {
+        return this.eastCell;
+    }
+
+    @Override
+    public Cell getNorth() {
+        return this.northCell;
+    }
+
+    @Override
+    public Cell getWest() {
+        return this.westCell;
+    }
+
+    @Override
+    public Cell getSouth() {
+        return this.southCell;
+    }
+
+    @Override
+    public Superpower getSuperPower() {
+        return superP;
     }
 
     @Override
@@ -128,4 +153,6 @@ public class CellAddress implements Cell {
     public Integer getY() {
         return axisY;
     }
+
+
 }

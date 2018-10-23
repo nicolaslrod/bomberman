@@ -34,4 +34,14 @@ public interface Cell {
     boolean hasASuperPower();
 
     void addSuperPower(Superpower sp);
+
+    Cell getEast();
+
+    Cell getNorth();
+
+    Cell getWest();
+
+    Cell getSouth();
+
+    Superpower getSuperPower();
 }

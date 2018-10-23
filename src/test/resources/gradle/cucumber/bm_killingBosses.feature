@@ -10,7 +10,7 @@ Feature: Boss effects
     And it drops a new super power on cell "1" "2"
 
 
-  #Scenario: Bomberman pick up new superpower
- #   Given An empty cellAddress "1" "2" with a superpower
-  #  When Bomberman is in cell "1" "1" and moves to callAddress "1" "2"
-   # Then Bomberman pick up the new superpower
+  Scenario: Bomberman pick up new superpower
+    Given A  Bomberman in cellAdress "1" "1" and a superPower in cellAdress "1" "2"
+    When Bomberman moves to "1" "2"
+    Then Bomberman picks up the new superpower

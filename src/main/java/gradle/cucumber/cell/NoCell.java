@@ -76,4 +76,29 @@ public class NoCell implements Cell {
     public void addSuperPower(Superpower sp) {
 
     }
+
+    @Override
+    public Cell getEast() {
+        return null;
+    }
+
+    @Override
+    public Cell getNorth() {
+        return null;
+    }
+
+    @Override
+    public Cell getWest() {
+        return null;
+    }
+
+    @Override
+    public Cell getSouth() {
+        return null;
+    }
+
+    @Override
+    public Superpower getSuperPower() {
+        return null;
+    }
 }

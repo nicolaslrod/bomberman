@@ -14,8 +14,7 @@ import gradle.cucumber.wall.NoWall;
 import gradle.cucumber.wall.SimpleWall;
 import gradle.cucumber.wall.SteelWall;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class BombermanBossStepdefs {
 
@@ -61,25 +60,34 @@ public class BombermanBossStepdefs {
     @And("^it drops a new super power on cell \"([^\"]*)\" \"([^\"]*)\"$")
     public void itDropsANewSuperPowerOnCell(String anAxisX, String anAxisY) throws Throwable {
         assertTrue(eastCell.hasASuperPower());
+
+
     }
-/*
-    @Given("^An empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with a superpower$")
-    public void anEmptyCellAddressWithASuperpower(String anAxisX, String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
+    //  ATDD Super powers
+    @Given("^A  Bomberman in cellAdress \"([^\"]*)\" \"([^\"]*)\" and a superPower in cellAdress \"([^\"]*)\" \"([^\"]*)\"$")
+    public void aBombermanInCellAdressAndASuperPowerInCellAdress(String anAxisX, String anAxisY, String anAxisX2, String anAxisY2) throws Throwable {
+        Cell cell2 = new CellAddress(Integer.valueOf(anAxisX2), Integer.valueOf(anAxisY2), new NoWall(), false,northCell,southCell,eastCell,westCell);
         Superpower sp = new Superpower();
-        cell.addSuperPower(sp);
+        cell2.addSuperPower(sp);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,cell2,westCell);
+        bomberman = new Bomberman(cell);
 
     }
 
-    @When("^Bomberman moves to callAddress \"([^\"]*)\" \"([^\"]*)\"$")
-    public void bombermanMovesToCallAddress(String arg0, String arg1) throws Throwable {
+
+
+    @When("^Bomberman moves to \"([^\"]*)\" \"([^\"]*)\"$")
+    public void bombermanMovesTo(String arg0, String arg1) throws Throwable {
+       bomberman.moveTo(bomberman.getPosition().getEast());
+    }
+
+    @Then("^Bomberman picks up the new superpower$")
+    public void bombermanPicksUpTheNewSuperpower() throws Throwable {
+       bomberman.pickUpSuperPower();
+       assertNotNull(bomberman.getSuperPower());
 
     }
 
-    @Then("^Bomberman pick up the new superpower$")
-    public void bombermanPickUpTheNewSuperpower() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-    */
+
+
 }
