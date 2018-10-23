@@ -1,6 +1,7 @@
 package gradle.cucumber.cell;
 
 import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.Wall;
 
 public class CellAddress implements Cell {
@@ -17,6 +18,7 @@ public class CellAddress implements Cell {
     private Cell southCell;
     private Cell eastCell;
     private Cell westCell;
+    private Superpower superP;
 
 
     public CellAddress(Integer anAxisX, Integer anAxisY, Wall wall, boolean enemy, Cell nc, Cell sc, Cell wc, Cell ec) {
@@ -110,6 +112,11 @@ public class CellAddress implements Cell {
     @Override
     public boolean hasASuperPower() {
         return this.superPower;
+    }
+
+    @Override
+    public void addSuperPower(Superpower sp) {
+        this.superP = sp;
     }
 
     @Override

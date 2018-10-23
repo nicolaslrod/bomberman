@@ -9,8 +9,3 @@ Feature: Boss effects
     Then the bomb after 'n' ticks kills Bagula at East
     And it drops a new super power on cell "1" "2"
 
-
-  #Scenario: Bomberman pick up new superpower
- #   Given An empty cellAddress "1" "2" with a superpower
-  #  When Bomberman is in cell "1" "1" and moves to callAddress "1" "2"
-   # Then Bomberman pick up the new superpower
