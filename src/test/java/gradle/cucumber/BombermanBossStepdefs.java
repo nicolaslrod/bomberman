@@ -9,6 +9,7 @@ import cucumber.api.java.en.When;
 import gradle.cucumber.cell.Cell;
 import gradle.cucumber.cell.CellAddress;
 import gradle.cucumber.cell.NoCell;
+import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.NoWall;
 import gradle.cucumber.wall.SimpleWall;
 import gradle.cucumber.wall.SteelWall;
@@ -61,4 +62,24 @@ public class BombermanBossStepdefs {
     public void itDropsANewSuperPowerOnCell(String anAxisX, String anAxisY) throws Throwable {
         assertTrue(eastCell.hasASuperPower());
     }
+/*
+    @Given("^An empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with a superpower$")
+    public void anEmptyCellAddressWithASuperpower(String anAxisX, String anAxisY) throws Throwable {
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
+        Superpower sp = new Superpower();
+        cell.addSuperPower(sp);
+
+    }
+
+    @When("^Bomberman moves to callAddress \"([^\"]*)\" \"([^\"]*)\"$")
+    public void bombermanMovesToCallAddress(String arg0, String arg1) throws Throwable {
+
+    }
+
+    @Then("^Bomberman pick up the new superpower$")
+    public void bombermanPickUpTheNewSuperpower() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+    */
 }

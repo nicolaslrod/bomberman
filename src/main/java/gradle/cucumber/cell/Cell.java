@@ -1,6 +1,7 @@
 package gradle.cucumber.cell;
 
 import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.SteelWall;
 import gradle.cucumber.wall.Wall;
 
@@ -31,4 +32,6 @@ public interface Cell {
     void addWall(Wall wall);
 
     boolean hasASuperPower();
+
+    void addSuperPower(Superpower sp);
 }

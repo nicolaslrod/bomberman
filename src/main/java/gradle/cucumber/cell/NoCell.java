@@ -1,6 +1,7 @@
 package gradle.cucumber.cell;
 
 import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.NoWall;
 import gradle.cucumber.wall.Wall;
 
@@ -69,5 +70,10 @@ public class NoCell implements Cell {
     @Override
     public boolean hasASuperPower() {
         return false;
+    }
+
+    @Override
+    public void addSuperPower(Superpower sp) {
+
     }
 }
