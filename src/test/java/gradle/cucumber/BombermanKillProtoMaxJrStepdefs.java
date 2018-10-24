@@ -81,6 +81,7 @@ public class BombermanKillProtoMaxJrStepdefs {
     public void bombermanPicksUpSuperPowerToJumpAyKindOfWall() throws Throwable {
         bomberman.pickUpSuperPower();
         assertFalse(bomberman.getSuperPower().isNoSuperPower());
+        assertTrue(bomberman.getSuperPower().isJumpPower());
     }
 
     @Given("^A Bomberman with a super power to jump any kind of wall$")

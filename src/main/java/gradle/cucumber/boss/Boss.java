@@ -15,7 +15,7 @@ public class Boss {
         cellAddress.addSuperPower(superP);
     }
 
-    public void dye() {
+    public void die() {
         this.live = false;
     }
 

@@ -5,6 +5,8 @@ import gradle.cucumber.cell.Cell;
 import gradle.cucumber.superpower.NoSuperpower;
 import gradle.cucumber.superpower.Superpower;
 
+import java.util.List;
+
 public class Bomberman {
 
     private Cell cell;
@@ -41,6 +43,8 @@ public class Bomberman {
         this.cell.setBomb(new Bomb());
     }
 
+
+    // SuperPowers
     public void pickUpSuperPower() {
        this.mySuperPower= this.getPosition().getSuperPower();
 
@@ -54,6 +58,18 @@ public class Bomberman {
     public void throwBomb(Cell cellToExplode) throws InterruptedException  {
         if(this.mySuperPower.isThrowPower()) {
             cellToExplode.setBomb(new Bomb());
+        }
+    }
+
+    public void throwMultiplesBombs(String bombs, List<Cell> cellsToBomb) {
+        if(Integer.valueOf(bombs) == cellsToBomb.size()) {
+            cellsToBomb.stream().forEach((elem) -> {
+                try {
+                    elem.setBomb(new Bomb());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 }
