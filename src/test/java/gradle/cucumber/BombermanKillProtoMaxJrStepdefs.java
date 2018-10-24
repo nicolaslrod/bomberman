@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import gradle.cucumber.boss.Boss;
+import gradle.cucumber.boss.ProtoMaxJR;
 import gradle.cucumber.cell.Cell;
 import gradle.cucumber.cell.CellAddress;
 import gradle.cucumber.cell.NoCell;
@@ -40,7 +41,7 @@ public class BombermanKillProtoMaxJrStepdefs {
 
     @And("^A Proto Max Jr in eastCell$")
     public void aProtoMaxJrInEastCell() throws Throwable {
-       eastCell.addBoss(new Boss(new NoSuperpower()));
+       eastCell.addBoss(new ProtoMaxJR());
     }
 
 
@@ -59,6 +60,7 @@ public class BombermanKillProtoMaxJrStepdefs {
     @And("^Proto Max Jr drops superPower that Bomberman could use to jump any kind of wall$")
     public void protoMaxJrDropsSuperPowerThatYouCouldUseToJumpAnyKindOfWall() throws Throwable {
         assertTrue(eastCell.hasASuperPower());
+        assertTrue(eastCell.getSuperPower().isJumpPower());
     }
 
 
@@ -81,7 +83,7 @@ public class BombermanKillProtoMaxJrStepdefs {
     @Then("^Bomberman picks up super power to jump any kind of wall$")
     public void bombermanPicksUpSuperPowerToJumpAyKindOfWall() throws Throwable {
         bomberman.pickUpSuperPower();
-        assertNotNull(bomberman.getSuperPower());
+        assertFalse(bomberman.getSuperPower().isNoSuperPower());
     }
 
     @Given("^A Bomberman with a super power to jump any kind of wall$")

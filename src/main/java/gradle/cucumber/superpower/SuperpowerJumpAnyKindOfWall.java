@@ -6,13 +6,4 @@ public class SuperpowerJumpAnyKindOfWall extends Superpower {
         return true;
     }
 
-    @Override
-    public boolean isThrowPower() {
-        return false;
-    }
-
-    @Override
-    public boolean isMultipleBombPower() {
-        return false;
-    }
 }
