@@ -47,7 +47,7 @@ public class BombermanMoveStepdefs {
         assertFalse(bomberman.isDead());
     }
 
-    @Then("^Bomberman´s position is \"([^\"]*)\" \"([^\"]*)\"")
+    @Then("^Bomberman's position is \"([^\"]*)\" \"([^\"]*)\"")
     public void bomber_man_position_is(String anAxisX, String anAxisY) throws Throwable {
         assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
         assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
