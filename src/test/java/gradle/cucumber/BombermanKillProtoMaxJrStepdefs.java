@@ -1,6 +1,5 @@
 package gradle.cucumber;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,14 +10,12 @@ import gradle.cucumber.cell.Cell;
 import gradle.cucumber.cell.CellAddress;
 import gradle.cucumber.cell.NoCell;
 import gradle.cucumber.superpower.NoSuperpower;
-import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.superpower.SuperpowerJumpAnyKindOfWall;
 import gradle.cucumber.wall.NoWall;
 import gradle.cucumber.wall.SimpleWall;
 
 import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.Assert.assertTrue;;
 
 public class BombermanKillProtoMaxJrStepdefs {
 

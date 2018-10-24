@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bomberman.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eis_201801c_tp_grupal</a> &gt; <a href="index.source.html" class="el_package">gradle.cucumber</a> &gt; <span class="el_source">Bomberman.java</span></div><h1>Bomberman.java</h1><pre class="source lang-java linenums">package gradle.cucumber;
+
+import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.cell.Cell;
+import gradle.cucumber.superpower.NoSuperpower;
+import gradle.cucumber.superpower.Superpower;
+
+import java.util.List;
+
+public class Bomberman {
+
+    private Cell cell;
+    private boolean alive;
+    private Superpower mySuperPower;
+
+
+<span class="fc" id="L17">    public Bomberman(Cell cell) {</span>
+<span class="fc" id="L18">        this.cell = cell;</span>
+<span class="fc" id="L19">        this.alive = true;</span>
+<span class="fc" id="L20">        mySuperPower = new NoSuperpower();</span>
+<span class="fc" id="L21">    }</span>
+
+    public void moveTo(Cell cell) {
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if(this.cell.isContiguous(cell)) {</span>
+<span class="fc bfc" id="L25" title="All 4 branches covered.">            if (cell.getWall().isNoWall() || this.mySuperPower.isJumpPower()) {</span>
+<span class="fc" id="L26">                this.cell = cell;</span>
+            }
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (cell.hasAnEnemy()) {</span>
+<span class="fc" id="L29">                this.alive = false;</span>
+            }
+        }
+<span class="fc" id="L32">    }</span>
+
+    public Cell getPosition() {
+<span class="fc" id="L35">        return this.cell;</span>
+    }
+
+    public boolean isDead() {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        return !alive;</span>
+    }
+
+    public void dropBomb() throws InterruptedException {
+<span class="fc" id="L43">        this.cell.setBomb(new Bomb());</span>
+<span class="fc" id="L44">    }</span>
+
+
+    // SuperPowers
+    public void pickUpSuperPower() {
+<span class="fc" id="L49">       this.mySuperPower= this.getPosition().getSuperPower();</span>
+
+<span class="fc" id="L51">    }</span>
+
+
+    public Superpower getSuperPower() {
+<span class="fc" id="L55">        return this.mySuperPower;</span>
+    }
+
+    public void throwBomb(Cell cellToExplode) throws InterruptedException  {
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if(this.mySuperPower.isThrowPower()) {</span>
+<span class="fc" id="L60">            cellToExplode.setBomb(new Bomb());</span>
+        }
+<span class="fc" id="L62">    }</span>
+
+    public void throwMultiplesBombs(String bombs, List&lt;Cell&gt; cellsToBomb) {
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if(Integer.valueOf(bombs) == cellsToBomb.size()) {</span>
+<span class="fc" id="L66">            cellsToBomb.stream().forEach((elem) -&gt; {</span>
+                try {
+<span class="fc" id="L68">                    elem.setBomb(new Bomb());</span>
+<span class="nc" id="L69">                } catch (InterruptedException e) {</span>
+<span class="nc" id="L70">                    e.printStackTrace();</span>
+<span class="fc" id="L71">                }</span>
+<span class="fc" id="L72">            });</span>
+        }
+<span class="fc" id="L74">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

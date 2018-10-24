@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NoCell.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eis_201801c_tp_grupal</a> &gt; <a href="index.source.html" class="el_package">gradle.cucumber.cell</a> &gt; <span class="el_source">NoCell.java</span></div><h1>NoCell.java</h1><pre class="source lang-java linenums">package gradle.cucumber.cell;
+
+import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.boss.Boss;
+import gradle.cucumber.superpower.Superpower;
+import gradle.cucumber.wall.NoWall;
+import gradle.cucumber.wall.Wall;
+
+<span class="fc" id="L9">public class NoCell implements Cell {</span>
+
+
+    @Override
+    public Integer getX() {
+<span class="nc" id="L14">        return null;</span>
+    }
+
+    @Override
+    public Integer getY() {
+<span class="nc" id="L19">        return null;</span>
+    }
+
+    @Override
+    public Wall getWall() {
+<span class="nc" id="L24">        return new NoWall();</span>
+    }
+
+    @Override
+    public boolean hasAnEnemy() {
+<span class="nc" id="L29">        return false;</span>
+    }
+
+    @Override
+    public boolean hasABoss() {
+<span class="nc" id="L34">        return false;</span>
+    }
+
+    @Override
+    public void setBomb(Bomb bomb) {
+
+<span class="nc" id="L40">    }</span>
+
+    @Override
+    public void breakWall(int ratio) {
+
+<span class="fc" id="L45">    }</span>
+
+    @Override
+    public void addEnemy() {
+
+<span class="nc" id="L50">    }</span>
+
+    @Override
+    public void addBoss(Boss boss) {
+
+<span class="nc" id="L55">    }</span>
+
+
+
+    @Override
+    public void killEnemy(int i) {
+
+<span class="fc" id="L62">    }</span>
+    @Override
+    public void killBoss(int i) {
+
+<span class="fc" id="L66">    }</span>
+
+    @Override
+    public void addWall(Wall wall) {
+
+<span class="nc" id="L71">    }</span>
+
+    @Override
+    public boolean hasASuperPower() {
+<span class="nc" id="L75">        return false;</span>
+    }
+
+    @Override
+    public void addSuperPower(Superpower sp) {
+
+<span class="nc" id="L81">    }</span>
+
+    @Override
+    public Cell getEast() {
+<span class="nc" id="L85">        return null;</span>
+    }
+
+    @Override
+    public Cell getNorth() {
+<span class="nc" id="L90">        return null;</span>
+    }
+
+    @Override
+    public Cell getWest() {
+<span class="nc" id="L95">        return null;</span>
+    }
+
+    @Override
+    public Cell getSouth() {
+<span class="nc" id="L100">        return null;</span>
+    }
+
+    @Override
+    public void setEast(Cell c) {
+
+<span class="nc" id="L106">    }</span>
+
+    @Override
+    public void setNorth(Cell c) {
+
+<span class="nc" id="L111">    }</span>
+
+    @Override
+    public void setWest(Cell c) {
+
+<span class="nc" id="L116">    }</span>
+
+    @Override
+    public void setSouth(Cell c) {
+
+<span class="nc" id="L121">    }</span>
+
+    @Override
+    public Superpower getSuperPower() {
+<span class="nc" id="L125">        return null;</span>
+    }
+
+    @Override
+    public Boolean isContiguous(Cell cell) {
+<span class="nc" id="L130">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

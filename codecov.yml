@@ -1,0 +1,28 @@
+codecov:
+  notify:
+    require_ci_to_pass: yes
+
+env:
+  token: CODECOV_TOKEN="912f21a4-e41f-43f9-b7d2-e65918f173f0"
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+
+  status:
+    project: yes
+    patch: yes
+    changes: no
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "header, diff"
+  behavior: default
+  require_changes: no

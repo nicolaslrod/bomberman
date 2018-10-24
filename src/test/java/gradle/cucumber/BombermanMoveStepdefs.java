@@ -1,5 +1,6 @@
 package gradle.cucumber;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -77,4 +78,9 @@ public class BombermanMoveStepdefs {
         assertTrue(bomberman.isDead());
     }
 
+    @Then("^Bomberman position is (\\d+) (\\d+)$")
+    public void bombermanPositionIs(int anAxisX, int anAxisY) throws Throwable {
+        assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
+        assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
+    }
 }
