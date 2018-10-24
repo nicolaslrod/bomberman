@@ -12,4 +12,5 @@ public abstract class Superpower {
     public boolean isMultipleBombPower(){
         return false;
     }
+    public boolean isNoSuperPower() {return false;}
 }

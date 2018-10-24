@@ -111,7 +111,7 @@ public class CellAddress implements Cell {
 
     @Override
     public boolean hasASuperPower() {
-        return this.superP != null;
+        return !this.superP.isNoSuperPower();
     }
 
     @Override

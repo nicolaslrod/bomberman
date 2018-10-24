@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import gradle.cucumber.boss.Bangula;
 import gradle.cucumber.boss.Boss;
 import gradle.cucumber.boss.ProtoMaxJR;
 import gradle.cucumber.cell.Cell;
@@ -33,7 +34,7 @@ public class BombermanBossStepdefs {
 
     @Given("^An empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with Bagula in the east cell$")
     public void aEmptyCellAddressWithProtoMaxUnitsInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
-        eastCell.addBoss(new ProtoMaxJR());
+        eastCell.addBoss(new Bangula());
         Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,new Boss(new NoSuperpower()),northCell,southCell,eastCell,westCell);
         bomberman = new Bomberman(cell);
         assertTrue(eastCell.hasABoss());
@@ -53,21 +54,8 @@ public class BombermanBossStepdefs {
     @And("^it drops a new super power on cell \"([^\"]*)\" \"([^\"]*)\"$")
     public void itDropsANewSuperPowerOnCell(String anAxisX, String anAxisY) throws Throwable {
         assertTrue(eastCell.hasASuperPower());
-
-
+        assertTrue(eastCell.getSuperPower().isThrowPower());
     }
-
-    @Then("^the bomb after 'n' ticks kills the enemy and it drops a new super power$")
-    public void theBombAfterNTicksKillsProtoMaxUnits() throws Throwable {
-        assertFalse(eastCell.hasABoss());
-    }
-
-
-    @And("^Bagula is next to the bomberman´s position at East$")
-    public void bagulaIsNextToTheBombermanSPositionAtEast() throws Throwable {
-        assertTrue(eastCell.hasABoss());
-    }
-
 
 
 
