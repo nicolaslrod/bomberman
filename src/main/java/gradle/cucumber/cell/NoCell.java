@@ -1,6 +1,7 @@
 package gradle.cucumber.cell;
 
 import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.boss.Boss;
 import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.NoWall;
 import gradle.cucumber.wall.Wall;
@@ -49,9 +50,11 @@ public class NoCell implements Cell {
     }
 
     @Override
-    public void addBoss() {
+    public void addBoss(Boss boss) {
 
     }
+
+
 
     @Override
     public void killEnemy(int i) {
@@ -98,7 +101,32 @@ public class NoCell implements Cell {
     }
 
     @Override
+    public void setEast(Cell c) {
+
+    }
+
+    @Override
+    public void setNorth(Cell c) {
+
+    }
+
+    @Override
+    public void setWest(Cell c) {
+
+    }
+
+    @Override
+    public void setSouth(Cell c) {
+
+    }
+
+    @Override
     public Superpower getSuperPower() {
+        return null;
+    }
+
+    @Override
+    public Boolean isContiguous(Cell cell) {
         return null;
     }
 }
