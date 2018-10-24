@@ -4,11 +4,12 @@ package gradle.cucumber;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import gradle.cucumber.boss.Boss;
 import gradle.cucumber.cell.Cell;
 import gradle.cucumber.cell.CellAddress;
 import gradle.cucumber.cell.NoCell;
+import gradle.cucumber.superpower.NoSuperpower;
 import gradle.cucumber.wall.NoWall;
-import gradle.cucumber.wall.Wall;
 import gradle.cucumber.wall.SimpleWall;
 import gradle.cucumber.wall.SteelWall;
 
@@ -18,18 +19,18 @@ import static org.junit.Assert.assertTrue;
 public class BombermanBombStepdefs {
 
     private Bomberman bomberman;
-    private Cell northCell = new CellAddress(2,1,new SimpleWall(),false,
+    private Cell northCell = new CellAddress(2,1,new SimpleWall(),false, new Boss(new NoSuperpower()),
             new NoCell(),new NoCell(),new NoCell(),new NoCell());
     private Cell southCell=new NoCell();
     private Cell westCell= new NoCell();
-    private Cell eastCell= new CellAddress(1,2,new SimpleWall(),false,new NoCell(),
+    private Cell eastCell= new CellAddress(1,2,new SimpleWall(),false,new Boss(new NoSuperpower()),new NoCell(),
             new NoCell(),new NoCell(),new NoCell());
 
     // First ATDD: destroying normal walls
 
     @Given("^A empty cellAddress \"([^\"]*)\" \"([^\"]*)\"")
     public void a_empty_cell(String anAxisX, String anAxisY) throws Throwable {
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,new Boss(new NoSuperpower()),northCell,southCell,eastCell,westCell);
         bomberman = new Bomberman(cell);
 
     }
@@ -52,7 +53,7 @@ public class BombermanBombStepdefs {
     @Given("^Other empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with a enemy in the next cell$")
     public void aEmptyCellAddressWithAEnemyInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
         northCell.addEnemy();
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,new Boss(new NoSuperpower()),northCell,southCell,eastCell,westCell);
         bomberman = new Bomberman(cell);
     }
 
@@ -72,7 +73,7 @@ public class BombermanBombStepdefs {
     public void celladdressWithASteelWallInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
         northCell.addWall(new SimpleWall());
         eastCell.addWall(new SteelWall());
-        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,northCell,southCell,eastCell,westCell);
+        Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,new Boss(new NoSuperpower()),northCell,southCell,eastCell,westCell);
         bomberman = new Bomberman(cell);
     }
 

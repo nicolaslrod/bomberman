@@ -1,6 +1,7 @@
 package gradle.cucumber.cell;
 
 import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.boss.Boss;
 import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.SteelWall;
 import gradle.cucumber.wall.Wall;
@@ -22,7 +23,7 @@ public interface Cell {
 
     void addEnemy();
 
-    void addBoss();
+    void addBoss(Boss boss);
 
     void killEnemy(int i);
 
@@ -43,5 +44,15 @@ public interface Cell {
 
     Cell getSouth();
 
+    void setEast(Cell c);
+
+    void setNorth(Cell c);
+
+    void setWest(Cell c);
+
+    void setSouth(Cell c);
+
     Superpower getSuperPower();
+
+    Boolean isContiguous(Cell cell);
 }

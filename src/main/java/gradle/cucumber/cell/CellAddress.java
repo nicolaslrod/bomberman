@@ -1,6 +1,7 @@
 package gradle.cucumber.cell;
 
 import gradle.cucumber.bomb.Bomb;
+import gradle.cucumber.boss.Boss;
 import gradle.cucumber.superpower.Superpower;
 import gradle.cucumber.wall.Wall;
 
@@ -11,8 +12,7 @@ public class CellAddress implements Cell {
     private Integer axisY;
     private Wall wall;
     private boolean enemy;
-    private boolean bomb;
-    private boolean bagula;
+    private Boss boss;
     private Cell northCell;
     private Cell southCell;
     private Cell eastCell;
@@ -20,13 +20,12 @@ public class CellAddress implements Cell {
     private Superpower superP;
 
 
-    public CellAddress(Integer anAxisX, Integer anAxisY, Wall wall, boolean enemy, Cell nc, Cell sc, Cell ec, Cell wc) {
+    public CellAddress(Integer anAxisX, Integer anAxisY, Wall wall, boolean enemy,Boss boss, Cell nc, Cell sc, Cell ec, Cell wc) {
         this.axisX = anAxisX;
         this.axisY = anAxisY;
         this.wall = wall;
         this.enemy = enemy;
-        this.bagula = false;
-        this.bomb= false;
+        this.boss = boss;
         this.northCell=nc;
         this.southCell=sc;
         this.eastCell=ec;
@@ -46,7 +45,7 @@ public class CellAddress implements Cell {
     }
     @Override
     public boolean hasABoss() {
-        return bagula;
+        return boss.isAlive();
     }
 
     @Override
@@ -74,8 +73,8 @@ public class CellAddress implements Cell {
     }
 
     @Override
-    public void addBoss() {
-        bagula = true;
+    public void addBoss(Boss boss) {
+        this.boss = boss;
     }
 
 
@@ -91,10 +90,11 @@ public class CellAddress implements Cell {
         }
     }
 
+
     @Override
     public void killBoss(int ratio) {
-        bagula = false;
-        superP = new Superpower();
+        boss.dropPower(this);
+        boss.dye();
         if(ratio > 0){
             int newRatio = ratio - 1;
             northCell.killBoss(newRatio);
@@ -140,8 +140,33 @@ public class CellAddress implements Cell {
     }
 
     @Override
+    public void setEast(Cell c) {
+        this.eastCell = c;
+    }
+
+    @Override
+    public void setNorth(Cell c) {
+        this.northCell = c;
+    }
+
+    @Override
+    public void setWest(Cell c) {
+        this.westCell = c;
+    }
+
+    @Override
+    public void setSouth(Cell c) {
+        this.southCell = c;
+    }
+
+    @Override
     public Superpower getSuperPower() {
         return superP;
+    }
+
+    @Override
+    public Boolean isContiguous(Cell cell) {
+        return northCell == cell || southCell ==  cell || westCell == cell || eastCell == cell;
     }
 
     @Override

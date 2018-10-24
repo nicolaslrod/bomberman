@@ -2,6 +2,7 @@ package gradle.cucumber;
 
 import gradle.cucumber.bomb.Bomb;
 import gradle.cucumber.cell.Cell;
+import gradle.cucumber.superpower.NoSuperpower;
 import gradle.cucumber.superpower.Superpower;
 
 public class Bomberman {
@@ -14,14 +15,17 @@ public class Bomberman {
     public Bomberman(Cell cell) {
         this.cell = cell;
         this.alive = true;
+        mySuperPower = new NoSuperpower();
     }
 
     public void moveTo(Cell cell) {
-        if(cell.getWall().isNoWall()){
-            this.cell = cell;
-        }
-        if(cell.hasAnEnemy()){
-            this.alive = false;
+        if(this.cell.isContiguous(cell)) {
+            if (cell.getWall().isNoWall() || this.mySuperPower.isJumpPower()) {
+                this.cell = cell;
+            }
+            if (cell.hasAnEnemy()) {
+                this.alive = false;
+            }
         }
     }
 
@@ -35,7 +39,6 @@ public class Bomberman {
 
     public void dropBomb() throws InterruptedException {
         this.cell.setBomb(new Bomb());
-     //   this.claimNewSuperPowers("ProtoMaxUnits");
     }
 
     public void pickUpSuperPower() {
@@ -49,7 +52,8 @@ public class Bomberman {
     }
 
     public void throwBomb(Cell cellToExplode) throws InterruptedException  {
-
-        cellToExplode.setBomb(new Bomb());
+        if(this.mySuperPower.isThrowPower()) {
+            cellToExplode.setBomb(new Bomb());
+        }
     }
 }
