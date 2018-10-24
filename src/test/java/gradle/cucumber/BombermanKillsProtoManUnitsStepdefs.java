@@ -34,7 +34,7 @@ public class BombermanKillsProtoManUnitsStepdefs {
     private Cell cell;
     private Cell cell2;
 
-
+    // FIRST ATDD:  BOMBERMAN TRIES TO MOVE TOWARDS A CELL WHICH HAS A WALL AND HE WOULD'NT BE ABLE TO DO THAT
     @Given("^A Bomberman is in cell \"([^\"]*)\" \"([^\"]*)\"$")
     public void aBombermanIsInCell(String anAxisX, String anAxisY) throws Throwable {
         cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,new Boss(new NoSuperpower()), northCell, southCell, eastCell, westCell);

@@ -43,6 +43,8 @@ public class Bomberman {
         this.cell.setBomb(new Bomb());
     }
 
+
+    // SuperPowers
     public void pickUpSuperPower() {
        this.mySuperPower= this.getPosition().getSuperPower();
 

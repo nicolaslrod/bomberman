@@ -94,7 +94,7 @@ public class CellAddress implements Cell {
     @Override
     public void killBoss(int ratio) {
         boss.dropPower(this);
-        boss.dye();
+        boss.die();
         if(ratio > 0){
             int newRatio = ratio - 1;
             northCell.killBoss(newRatio);

@@ -5,9 +5,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import gradle.cucumber.boss.Bangula;
+import gradle.cucumber.boss.Bagula;
 import gradle.cucumber.boss.Boss;
-import gradle.cucumber.boss.ProtoMaxJR;
 import gradle.cucumber.cell.Cell;
 import gradle.cucumber.cell.CellAddress;
 import gradle.cucumber.cell.NoCell;
@@ -34,7 +33,7 @@ public class BombermanBossStepdefs {
 
     @Given("^An empty cellAddress \"([^\"]*)\" \"([^\"]*)\" with Bagula in the east cell$")
     public void aEmptyCellAddressWithProtoMaxUnitsInTheNextCell(String anAxisX, String anAxisY) throws Throwable {
-        eastCell.addBoss(new Bangula());
+        eastCell.addBoss(new Bagula());
         Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), false,new Boss(new NoSuperpower()),northCell,southCell,eastCell,westCell);
         bomberman = new Bomberman(cell);
         assertTrue(eastCell.hasABoss());
