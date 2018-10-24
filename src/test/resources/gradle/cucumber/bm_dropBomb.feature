@@ -9,10 +9,10 @@ Feature: Bomb's effects
 
   Scenario: Bomberman drop a bomb and after "n" ticks it applies its effect with enemies
     Given Other empty cellAddress "1" "1" with a enemy in the next cell
-    When Bomberman drops a bomb and one enemy it´s next to the bomberman´s position
+    When Bomberman drops a bomb and one enemy is next to the bomberman's position
     Then the bomb after 'n' ticks kills all the enemies that are in contact with the expansive wave
 
   Scenario: Bomberman drop a bomb and after "n" ticks it applies its effect with steel walls
     Given cellAddress "1" "1" with a steel wall in the next cell
-    When Bomberman drops a bomb and a steel wall it´s next to the bomberman´s position
-    Then the bomb after 'n' ticks the steel wall it´s not destroy
+    When Bomberman drops a bomb and a steel wall is next to the bomberman's position
+    Then the bomb after 'n' ticks the steel wall it's not destroy

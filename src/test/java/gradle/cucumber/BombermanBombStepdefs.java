@@ -57,7 +57,7 @@ public class BombermanBombStepdefs {
         bomberman = new Bomberman(cell);
     }
 
-    @When("^Bomberman drops a bomb and one enemy it´s next to the bomberman´s position$")
+    @When("^Bomberman drops a bomb and one enemy is next to the bomberman's position$")
     public void bombermanDropsABombAndOneEnemyItSNextToTheBombermanSPosition() throws Throwable {
         assertTrue(northCell.hasAnEnemy());
         bomberman.dropBomb();
@@ -77,14 +77,14 @@ public class BombermanBombStepdefs {
         bomberman = new Bomberman(cell);
     }
 
-    @When("^Bomberman drops a bomb and a steel wall it´s next to the bomberman´s position$")
+    @When("^Bomberman drops a bomb and a steel wall is next to the bomberman's position$")
     public void bombermanDropsABombAndASteelWallItSNextToTheBombermanSPosition() throws Throwable {
         assertFalse(northCell.getWall().isBroken());
         assertFalse(eastCell.getWall().isBroken());
         bomberman.dropBomb();
     }
 
-    @Then("^the bomb after 'n' ticks the steel wall it´s not destroy$")
+    @Then("^the bomb after 'n' ticks the steel wall it's not destroy$")
     public void theBombAfterNTicksTheSteelWallItSNotDestroy() throws Throwable {
         assertTrue(northCell.getWall().isBroken());
         assertFalse(eastCell.getWall().isBroken());

@@ -1,5 +1,6 @@
 package gradle.cucumber;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -49,14 +50,6 @@ public class BombermanMoveStepdefs {
         bomberman.moveTo(cell);
     }
 
-
-
-    @Then("^Bomberman's position is \"([^\"]*)\" \"([^\"]*)\"")
-    public void bomber_man_position_is(String anAxisX, String anAxisY) throws Throwable {
-        assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
-        assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
-    }
-
     @When("^Bomberman moves to a cell with an enemy \"([^\"]*)\" \"([^\"]*)\"")
     public void bomberman_moves_to_cell_with_an_enemy(String anAxisX,  String anAxisY) throws Throwable {
         Cell cell = new CellAddress(Integer.valueOf(anAxisX), Integer.valueOf(anAxisY), new NoWall(), true,new Boss(new NoSuperpower()),new NoCell(),new NoCell(),new NoCell(),new NoCell());
@@ -70,4 +63,9 @@ public class BombermanMoveStepdefs {
         assertTrue(bomberman.isDead());
     }
 
+    @Then("^Bomberman position is (\\d+) (\\d+)$")
+    public void bombermanPositionIs(int anAxisX, int anAxisY) throws Throwable {
+        assertEquals(bomberman.getPosition().getX(), Integer.valueOf(anAxisX));
+        assertEquals(bomberman.getPosition().getY(), Integer.valueOf(anAxisY));
+    }
 }

@@ -10,7 +10,7 @@ Feature: Move
   Scenario: Bomberman moves to the contigus cell but there is a wall
     Given A empty cell "1" "1"
     When Bomberman moves to a wall "2" "1"
-    Then Bomberman's position is "1" "1"
+    Then Bomberman position is 1 1
 
   Scenario: Bomberman moves to the contigus cell but there is an enemy and Bomberman dies
     Given A empty cell "1" "1"

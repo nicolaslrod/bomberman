@@ -7,7 +7,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import gradle.cucumber.boss.Bangula;
 import gradle.cucumber.boss.Boss;
-import gradle.cucumber.boss.ProtoMaxJR;
 import gradle.cucumber.cell.Cell;
 import gradle.cucumber.cell.CellAddress;
 import gradle.cucumber.cell.NoCell;
